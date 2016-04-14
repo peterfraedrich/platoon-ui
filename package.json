@@ -1,0 +1,18 @@
+{
+  "name": "platoon-ui",
+  "version": "1.0.0",
+  "description": "a UI for the Platoon server & db",
+  "main": "ui.js",
+  "scripts": {
+    "test": "forever ui.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/peterfraedrich/platoon-ui.git"
+  },
+  "author": "Peter Fraedrich",
+  "license": "none",
+  "bugs": {
+    "url": "https://github.com/peterfraedrich/platoon-ui/issues"
+  }
+}

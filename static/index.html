@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html ng-app='platoon'>
+
+<head>
+    <title>PLATOON</title>
+    <link rel='stylesheet' href='./css/style.css' type='text/css'>
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <!-- JS -->
+    <script src="./js/jquery-2.2.2.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js'></script>
+    <script src='./js/angular-modules.js'></script>
+
+</head>
+
+<body ng-controller='platoon-main'>
+    <div id='wrap-main'>
+    <input type='text' id='search' ng-model='search' placeholder='SEARCH'>
+    <button id='refresh' ng-model='refresh' onClick='refresh()'>REFRESH</button>
+    <table id='server_table'>
+        <tr class='tbl-row' ng-repeat='i in cluster track by i._id'> 
+            <td class='col col1'>something</td>
+        </tr>
+    </table>
+
+
+    </div>
+
+
+
+</body>

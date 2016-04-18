@@ -24,7 +24,6 @@ app.controller('platoon-main', ['$scope', '$timeout', '$http', '$templateCache',
     $scope.getDetails = function (ip, port, callback) {
         var url = 'http://' + ip + ':' + port + '/status'
         $http.get(url).then(function (res) {
-            console.log(res.data)
             return callback(res.data)
         })
     }
@@ -50,8 +49,32 @@ app.controller('platoon-main', ['$scope', '$timeout', '$http', '$templateCache',
         return p.promise;
     }
 
+    $scope.cluster_status = function (i) {
+        if (i == false || i == 'false') {
+            return "#CC5731"
+        } else {
+            return "#58CC31"
+        }
+    }
+
+    $scope.member_status = function (m, i) {
+        console.log(m)
+        console.log(i)
+        if (i.details.down.indexOf(m.hostname) != -1) {
+            return '#CC5731'
+        } else {
+            return '#58CC31'
+        }
+    }
+
+    $scope.refresh = function () {
+        $scope.getAll().then(function(results) {
+            $scope.cluster = results
+        })
+    }
+
     $scope.getAll().then(function(results) {
-        $scope.cluster = JSON.stringify(results)
+        $scope.cluster = results
         console.log($scope.cluster)
     })
 

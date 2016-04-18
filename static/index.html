@@ -16,11 +16,39 @@
 
 <body ng-controller='platoon-main'>
     <div id='wrap-main'>
-    <input type='text' id='search' ng-model='search' placeholder='SEARCH'>
-    <button id='refresh' ng-model='refresh' onClick='refresh()'>REFRESH</button>
+    <input type='text' id='search' ng-model='searchText' placeholder='SEARCH'>
+    <button id='refresh' ng-model='refresh' ng-click='refresh()'>REFRESH</button>
     <table id='server_table'>
-        <tr class='tbl-row' ng-repeat='i in cluster track by i._id'> 
-            <td class='col col1'>something</td>
+        <tr class='tbl-header'>
+            <th class='col hcol hstatus'></th>
+            <th class='spacer'></th>
+            <th class='col hcol hcol1'>Cluster ID</th>
+            <th class='col hcol hcol2'>Region</th>
+            <th class='col hcol hcol3'>Members</th>
+            <th class='col hcol hcol4'>Services</th>
+            <th class='col hcol hcol5'>Quorum % <span class='small_text'>(target)</span></th>
+            <th class='col hcol hcolg'>Members</th>
+            <th></th>
+            <!--<th class='col hcol hfill'><! filler to end of table --><!--</th>-->
+        </tr>
+        <tr class='tbl-row' ng-repeat='i in cluster | filter: searchText'>
+            <td class='status_col'><div class='cstatus' ng-style="{ 'background-color' : cluster_status(i.details.quorum) }"><img src='./img/cluster.png' id='cluster_icon'></div></td>
+            <td class='spacer'></td>
+            <td class='col col1'>{{ i.cluster_id }}</td>
+            <td class='col col2'>{{ i.region }}</td>
+            <td class='col col3'>{{ i.details.tot_members - i.details.down_members}}/{{ i.details.tot_members}}</td>
+            <td class='col col4'>{{ i.details.svc_ok }}/{{ i.details.svc_err + i.details.svc_ok }}</td>
+            <td class='col col5'>{{ i.details.pct }}/100 <span class='small_text'>({{i.details.quorum_target}})</span></td>
+            <td class='col-grid'>
+                <div class='col-grid-div' ng-repeat='m in i.details.members'>
+                    <div class='member-li' ng-style="{ 'background-color' : member_status(m, i) }" title='{{m.hostname}}'></div>
+                </div>
+            </td>
+            <td class='col col6'>
+                <button id='raw_btn' class='tbl-btn' ng-click='' title='Show JSON'></button>
+                <button id='detail_btn' class='tbl-btn' ng-click='' title='Cluster details'></button>        
+            </td>
+            <!--<td class='col cfill'></td>-->
         </tr>
     </table>
 

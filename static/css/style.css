@@ -17,14 +17,14 @@ body {
     margin-top: 100px;
     padding: 10px;
     /* style */
-    background-color: rgba(255,255,255,0.8);
+    background-color: #F4F1F0;
 }
 
 #search {
     /* position */
     width: 60%;
     height: 30px;
-    padding-right: 10px;
+    padding-left: 10px;
     font-size: 20px;
     font-family: 'Roboto Condensed', sans-serif;
     vertical-align: middle;
@@ -38,7 +38,162 @@ body {
     margin-left: 10px;
 }
 
+.cstatus {
+    width: 70px;
+    height: 70px;
+    background-color: #888;
+    text-align: center;
+    border-radius: 50px;
+    vertical-align: middle;
+}
+
+.status_col {
+    text-align: center;
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+}
+
+.small_text {
+    font-size: 0.6em;
+}
+
+#cluster_icon {
+    width: 60px;
+    margin-top: 5px;
+    vertical-align: middle;
+    text-align: center;
+    /*width: 50px;*/
+}
+
+#raw_btn {
+    background-image: url('../img/raw.png');
+}
+
+#detail_btn {
+    background-image: url('../img/arrow.png');
+    background-size: 60%;
+
+}
+
+.tbl-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* TABLE ELEMENTS */
+
+tr, th, td, table {
+    border-collapse: collapse;
+    border: none;
+    margin: none;
+    padding: none;
+}
+
+tr:not(:first-child):hover {
+    background-color: #FFF;
+}
+
+td {
+    padding: 5px;
+}
+
+.spacer {
+    width: 10px;
+}
+
+.col {
+    padding: 10px;
+    font-family: 'Roboto Condensed';
+}
+
 #server_table {
-    border: 1px solid red;
+    border: 0px;
+    margin-top: 10px;
     width: 100%;
+}
+
+.tbl-header {
+    background-color: #333;
+    line-height: 30px;
+}
+
+.hcol {
+    text-align: left;
+    color: #FFF;
+    font-family: 'Roboto Condensed';
+}
+
+.col1, .hcol1 {
+    width: 150px;
+}
+
+.col1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.col2 {
+    font-size: 20px;
+}
+
+.col2, .hcol2 {
+    width: 100px;
+}
+
+
+.col3, .hcol3 {
+    width: 80px;
+}
+
+.col4, .hcol4 {
+    width: 80px;
+}
+
+.col5, .hcol5 {
+    width: 100px;
+}
+
+.col6, .hcol6 {
+    text-align: right;
+}
+
+.hcolg {
+    text-align: left;
+}
+
+.mcol {
+    width: 10px;
+}
+
+.grid-tr {
+
+}
+
+.col-grid {
+    padding: none;
+    margin: none;
+}
+
+.col-grid-div {
+    display: inline-flex;
+    padding: none;
+    margin: 1px;
+}
+
+.member-li {
+    list-style-type: none;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin: none;
+    padding: none;
 }

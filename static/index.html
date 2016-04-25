@@ -39,22 +39,50 @@
             <td class='col col3'>{{ i.details.tot_members - i.details.down_members}}/{{ i.details.tot_members}}</td>
             <td class='col col4'>{{ i.details.svc_ok }}/{{ i.details.svc_err + i.details.svc_ok }}</td>
             <td class='col col5'>{{ i.details.pct }}/100 <span class='small_text'>({{i.details.quorum_target}})</span></td>
-            <td class='col-grid'>
-                <div class='col-grid-div' ng-repeat='m in i.details.members'>
+            <td class='col col-grid'>
+                <div class='col-grid-div' ng-repeat="m in i.details.members | orderBy: 'hostname'">
                     <div class='member-li' ng-style="{ 'background-color' : member_status(m, i) }" title='{{m.hostname}}'></div>
                 </div>
             </td>
             <td class='col col6'>
-                <button id='raw_btn' class='tbl-btn' ng-click='' title='Show JSON'></button>
-                <button id='detail_btn' class='tbl-btn' ng-click='' title='Cluster details'></button>        
+                <button id='raw_btn' class='tbl-btn' ng-click='show_json(i)' title='Show JSON'></button>
+                <button id='detail_btn' class='tbl-btn' ng-click='show_detail(i)' title='Cluster details'></button>        
             </td>
             <!--<td class='col cfill'></td>-->
         </tr>
     </table>
+    </div> <!-- WRAP MAIN -->
 
+    <div id='detail-window'>
+        <div id='wrap-detail'>
+        <div id='status_bar' ng-style="{ 'background-color' : cluster_status($scope.details.details.quorum) }"></div>
+        <table id='detail-tbl'>
+            <tr class='dtbl-row'>
+                <td class='dtbl dtbl-col1'>Cluster ID:</td>
+                <td class='dtbl dtbl-col2' ng-bind='detail.cluster_id'></td>
+                <td class='dtbl dtbl-spacer'></td>
+                <td class='dtbl dtbl-col3'>Region:</td>
+                <td class='dtbl dtbl-col4' ng-bind='detail.region'></td>
+                <td></td>
+            </tr>
+            <tr class='dtbl-row'>
+                <td class='dtbl dtbl-col1'>Quorum:</td>
+                <td class='dtbl dtbl-col2'ng-bind='detail.details.quorum'></td>
+            </tr>
+        </table>
+        <div id='members_header'>
+            <span class='m-header'>Members</span>
+            <button id='add-btn' class='tbl-btn' title='Add member'></button>
+        </div>
+        <table id='member-tbl'>
+            <tr class='mtbl-tr' ng-repeat='m in detail.details.members'>
+                <td class='mtbl mtbl-status' ng-style="{ 'background-color' : member_status.detail(m) }">
+                <td class='mtbl mtbl-col1'>{{ m.hostname }}</td>
+                <td class='mtbl mtbl-col2'>{{ m.ip }}</td>
+                <td class='mtbl mtbl-col3' ng-bind=''></td>
+
+        </div>
 
     </div>
-
-
 
 </body>

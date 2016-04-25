@@ -11,7 +11,7 @@ app.config(['$httpProvider', function($httpProvider) {
 
 // controller
 
-app.controller('platoon-main', ['$scope', '$timeout', '$http', '$templateCache', '$interval', '$q', function($scope, $timeout, $http, $templateCache, $interval, $q) {
+app.controller('platoon-main', ['$scope', '$window', '$timeout', '$http', '$templateCache', '$interval', '$q', function($scope, $window, $timeout, $http, $templateCache, $interval, $q) {
 
     // get all servers from DB
     $scope.getServers = function (callback) {
@@ -58,13 +58,27 @@ app.controller('platoon-main', ['$scope', '$timeout', '$http', '$templateCache',
     }
 
     $scope.member_status = function (m, i) {
-        console.log(m)
-        console.log(i)
         if (i.details.down.indexOf(m.hostname) != -1) {
             return '#CC5731'
         } else {
             return '#58CC31'
         }
+    }
+
+    $scope.member_status_detail = function (m) {
+        if ($scope.detail.details.down.indexOf(m.hostname) != -1) {
+            return '#CC5731'
+        } else {
+            return '#58CC31'
+        }
+    }
+
+    $scope.show_json = function (i) {
+        $window.open('data:application/json,' + encodeURIComponent(JSON.stringify(i)),'_blank')
+    }
+
+    $scope.show_detail = function (i) {
+        $scope.detail = i
     }
 
     $scope.refresh = function () {
@@ -75,9 +89,19 @@ app.controller('platoon-main', ['$scope', '$timeout', '$http', '$templateCache',
 
     $scope.getAll().then(function(results) {
         $scope.cluster = results
-        console.log($scope.cluster)
     })
 
+    $scope.detail = {
+        cluster_id : 'dev',
+        hostname : 'cluster-manager',
+        ip : '96.118.61.42',
+        port : 5000,
+        region : 'as_b',
+        _id : '570fce',
+        details : {
+            quorum: true
+        }
+    }
 
 
  

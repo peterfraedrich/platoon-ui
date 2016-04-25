@@ -18,6 +18,7 @@ body {
     padding: 10px;
     /* style */
     background-color: #F4F1F0;
+    z-index: 900;
 }
 
 #search {
@@ -87,6 +88,10 @@ body {
     background-repeat: no-repeat;
     cursor: pointer;
     display: inline-block;
+}
+
+.tbl-btn:active {
+    background-color: #888;
 }
 
 /* TABLE ELEMENTS */
@@ -196,4 +201,83 @@ td {
     display: inline-block;
     margin: none;
     padding: none;
+}
+
+/*   DETAIL   */
+
+#detail-window {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    top: 0px;
+    left: 0px;
+    /*backdrop-filter: blur(3px);*/
+}
+
+#wrap-detail {
+    width: 800px;
+    height: 800px;
+    background-color: #F4F1F0;
+    margin: auto;
+
+}
+
+#status_bar {
+    width: 100%;
+    height: 20px;
+
+}
+
+/* detail table */
+#detail-tbl {
+    position: relative;
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+
+.dtbl {
+    font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+    text-align: left;
+}
+
+.dtbl-col1, .dtbl-col3 {
+    width: 130px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.dtbl-col2, .dtbl-col4 {
+    width: 100px;
+    font-size: 30px;
+}
+
+.dtbl-spacer {
+    width: 80px;
+}
+
+#members_header {
+    width: 90%;
+    margin: auto;
+    text-align: left;
+}
+
+.m-header {
+    marign-top: 20px;
+    font-size: 30px;
+    font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#add-btn {
+    display: inline-block;
+    text-align: right;
+    margin-left: 20px;
+    background-image: url('../img/plus.png');
+    background-size: 50%;
 }
